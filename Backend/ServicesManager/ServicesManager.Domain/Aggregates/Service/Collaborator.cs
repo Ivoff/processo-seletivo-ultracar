@@ -2,7 +2,7 @@ namespace ServicesManager.Domain.Service;
 
 using ServicesManager.Domain.Shared;
 
-class Collaborator: Entity
+public class Collaborator: Entity
 {
     public string Name { get; init; }
 

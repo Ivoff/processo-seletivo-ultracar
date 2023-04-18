@@ -20,3 +20,6 @@
 ### Cliente exibe Qrcode
 * O cliente acessa a aplicação web selecionando um carro dos cadastrados
 * O cliente acessa a página de exibição do qrcode
+
+# Mudanças - 1
+* Nada de codificação da comunicação em JWT, não há tempo.

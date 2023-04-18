@@ -2,7 +2,7 @@ namespace ServicesManager.Domain.Service;
 
 using ServicesManager.Domain.Shared;
 
-class Car
+public class Car
 {
     public string Model { get; init; }
     public string Year { get; init; }

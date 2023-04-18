@@ -5,12 +5,12 @@ namespace ServicesManager.WebApi.Controllers;
 using ServicesManager.Domain.QrCodeService;
 
 [ApiController]
-[Route("service")]
-public class ServiceController : ControllerBase
+[Route("client")]
+public class ClientController : ControllerBase
 {
     private readonly IQrCodeService _qrCodeService;
 
-    public ServiceController(IQrCodeService qrCodeService)
+    public ClientController(IQrCodeService qrCodeService)
     {
         _qrCodeService = qrCodeService;
     }

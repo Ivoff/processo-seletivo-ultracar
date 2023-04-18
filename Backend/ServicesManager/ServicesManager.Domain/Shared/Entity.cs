@@ -1,12 +1,18 @@
 namespace ServicesManager.Domain.Shared;
 
-class Entity
+using System;
+
+public class Entity
 {
     public Guid Id { get; init; }
 
     public DateTime CreatedAt { get; init; }
 
-    private Entity(){}
+    public  Entity()
+    {
+        Id = Guid.NewGuid();
+        CreatedAt = DateTime.Now;
+    }
 
     public Entity(Guid id, DateTime createdAt) 
     {
