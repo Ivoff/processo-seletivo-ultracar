@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="FluentValidation" Version="7"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\ServiceController\Validators\" />
   </ItemGroup>
 
 </Project>
