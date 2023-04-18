@@ -2,5 +2,5 @@ namespace ServicesManager.Application.ClientService;
 
 public interface IClientAppService
 {
-    public byte[] GenerateQrCode(Guid clientId);
+    public string GenerateQrCode(Guid clientId, Guid carId);
 }

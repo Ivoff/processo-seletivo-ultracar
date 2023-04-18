@@ -1,7 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="Npgsql" Version="7.0.2" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
     <ProjectReference Include="..\ServicesManager.Domain\ServicesManager.Domain.csproj" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.Options">
+      <HintPath>..\..\..\..\..\..\.nuget\packages\microsoft.aspnetcore.app.ref\6.0.12\ref\net6.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <PropertyGroup>

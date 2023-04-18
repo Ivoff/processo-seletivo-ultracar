@@ -29,7 +29,6 @@ CREATE TABLE part (
     created_at TIMESTAMP NOT NULL,
     name VARCHAR NOT NULL,
     price decimal NOT NULL,
-    quantity integer NOT NULL,
 
     PRIMARY KEY (id)
 );
@@ -38,8 +37,8 @@ CREATE TABLE service (
     created_at TIMESTAMP NOT NULL,
     collaborator_id uuid NOT NULL,
     car_id uuid NOT NULL,
-    started_at TIMESTAMP NOT NULL,
-    finished_at TIMESTAMP NOT NULL,
+    started_at TIMESTAMP,
+    finished_at TIMESTAMP,
 
     PRIMARY KEY (id),
     CONSTRAINT fk_collaborator FOREIGN KEY(collaborator_id) REFERENCES collaborator(id),
@@ -48,7 +47,28 @@ CREATE TABLE service (
 CREATE TABLE service_parts (
     part_id uuid NOT NULL,
     service_id uuid NOT NULL,
+    quantity integer NOT NULL,
 
     CONSTRAINT fk_part FOREIGN KEY(part_id) REFERENCES part(id),
     CONSTRAINT fk_service FOREIGN KEY(service_id) REFERENCES service(id)
 );
+
+COPY client(id, created_at, name)
+FROM '/files/clients.csv'
+DELIMITER ','
+CSV HEADER;
+
+COPY collaborator(id, created_at, name)
+FROM '/files/collaborator.csv'
+DELIMITER ','
+CSV HEADER;
+
+COPY car(id, owner_id, created_at, model, year)
+FROM '/files/car.csv' 
+DELIMITER ','
+CSV HEADER;
+
+COPY part(id, created_at, name, price)
+FROM '/files/part.csv' 
+DELIMITER ','
+CSV HEADER;

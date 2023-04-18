@@ -11,7 +11,7 @@ builder.Services.AddScoped<IValidator<GenerateQrCodeRequest>, GenerateQrCodeRequ
 
 var app = builder.Build();
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

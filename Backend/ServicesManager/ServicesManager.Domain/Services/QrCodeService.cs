@@ -8,16 +8,26 @@ class QrCodeService: IQrCodeService
 {
     private readonly IOptions<QrCodeApiOptions> _qrCodeApiOptions;
 
-    QrCodeService(IOptions<QrCodeApiOptions> qrCodeApiOptions)
+    public QrCodeService(IOptions<QrCodeApiOptions> qrCodeApiOptions)
     {
         _qrCodeApiOptions = qrCodeApiOptions;
     }
 
-    public async void GenerateQrCode(Car car, Client client)
+    public byte[] GenerateQrCode(Car car, Client client)
     {
         var api = new RestClient(new RestClientOptions(_qrCodeApiOptions.Value.Address));
         var request = new RestRequest(_qrCodeApiOptions.Value.Path);
-        var response = await api.PostAsync(request);
-        Console.WriteLine(response.Content);
+        request.AddJsonBody(new
+        {
+            ClientId = client.Id,
+            CarId = car.Id
+        });
+
+        var response = api.ExecutePost<QrCodeDTO>(request);
+        
+        if (response.Data == null)
+            return new byte[] { };
+
+        return response.Data.qrCode;
     }
 }

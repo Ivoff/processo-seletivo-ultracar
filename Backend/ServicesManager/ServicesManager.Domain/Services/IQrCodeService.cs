@@ -4,5 +4,5 @@ using ServicesManager.Domain.Client;
 
 public interface IQrCodeService
 {
-    public void GenerateQrCode(Car car, Client client);
+    public byte[] GenerateQrCode(Car car, Client client);
 }

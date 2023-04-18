@@ -14,11 +14,4 @@ public class Part: Entity
         Price = price;
         Quantity = quantity;
     }
-
-    public Part(string name, decimal price, int quantity, Guid id, DateTime createdAt): base(id, createdAt)
-    {
-        Name = name;
-        Price = price;
-        Quantity = quantity;
-    }
 }
