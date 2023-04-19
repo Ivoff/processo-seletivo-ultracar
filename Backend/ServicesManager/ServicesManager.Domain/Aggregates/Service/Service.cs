@@ -22,14 +22,42 @@ public class Service: Entity
 
     public void Begin()
     {
+        if (StartedAt != null)
+            throw new Exception("A service can only be initialized once.");
+        
         StartedAt = DateTime.Now;
     }
 
     public void Finish()
     {
+        if (FinishedAt != null)
+            throw new Exception("A service can only be finished once.");
+        
         FinishedAt = DateTime.Now;
     }
 
+    public void AddPart(Part part)
+    {
+        if (FinishedAt != null)
+            throw new Exception("Can't add parts after finishing a service.");
+        
+        if (StartedAt != null)
+            throw new Exception("Can't add parts after starting a service.");
+        
+        PartsCollection.AddPart(part);
+    }
+
+    public void RemovePart(Part part)
+    {
+        if (FinishedAt != null)
+            throw new Exception("Can't remove parts after finishing a service.");
+        
+        if (StartedAt != null)
+            throw new Exception("Can't remove parts after starting a service.");
+        
+        PartsCollection.RemovePart(part);
+    }
+    
     public static Service Create(
         Car car, 
         Collaborator collaborator,

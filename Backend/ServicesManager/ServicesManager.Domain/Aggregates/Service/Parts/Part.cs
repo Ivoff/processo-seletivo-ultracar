@@ -6,7 +6,7 @@ public class Part: Entity
 {
     public string Name { get; init; }
     public decimal Price { get; init; }
-    public int Quantity { get; init; }
+    public int Quantity { get; set; }
 
     public Part(string name, decimal price, int quantity, Guid id, DateTime createdAt): base(id, createdAt)
     {

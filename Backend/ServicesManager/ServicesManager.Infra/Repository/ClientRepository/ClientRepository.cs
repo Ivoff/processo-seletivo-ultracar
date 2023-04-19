@@ -36,7 +36,7 @@ public class ClientRepository : IRepository<Client>
                 continue;
             
             curClientCars = _dbConnection.Con
-                .Query<CarDTO>(@"select * from car where owner_id = @Id", new { Id = id }).ToList();
+                .Query<CarDTO>(@"select * from car where ownerid = @Id", new { Id = id }).ToList();
 
             var carsList = curClientCars.Select((x) => new Car(x.Model, x.Year, x.Id, x.CreatedAt)).ToList();
             

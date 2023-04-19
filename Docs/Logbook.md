@@ -23,3 +23,12 @@
 
 # Mudanças - 1
 * Nada de codificação da comunicação em JWT, não há tempo.
+
+# Mudanças - 2
+* Ia colocar uma propriedade de cor a entidade carro da seção da aplicação destinada ao cliente, porém acabei esquecendo e nhá mais tempo.
+
+# Mudanças - 3
+* Modelei "Parts", quantity não deveria estar na tabela e entidade concreta de Parts. Tive que passar zero na hora de ler as peças pela identidade delas e não da instância delas em um serviço.
+
+# Mudanças - 4
+* Não dá tempo de implementar a remoção de peças então a aplicação não suportará essa funcionalidade.

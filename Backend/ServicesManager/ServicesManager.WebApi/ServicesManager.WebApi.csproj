@@ -12,10 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\ServiceController\Validators\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ServicesManager.Application\ServicesManager.Application.csproj" />
     <ProjectReference Include="..\ServicesManager.Domain\ServicesManager.Domain.csproj" />
     <ProjectReference Include="..\ServicesManager.Infra\ServicesManager.Infra.csproj" />

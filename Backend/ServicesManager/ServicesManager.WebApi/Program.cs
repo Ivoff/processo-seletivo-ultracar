@@ -14,6 +14,10 @@ builder.Services.AddInfra();
 builder.Services.AddApplication();
 
 builder.Services.AddScoped<IValidator<CarQrCodeRequest>, CarQrCodeRequestValidator>();
+builder.Services.AddScoped<IValidator<NewServiceRequest>, NewServiceRequestValidator>();
+builder.Services.AddScoped<IValidator<ServiceIdRequest>, ServiceIdRequestValidator>();
+builder.Services.AddScoped<IValidator<AddPartRequest>, AddPartRequestValidator>();
+builder.Services.AddScoped<IValidator<RemovePartRequest>, RemovePartRequestValidator>();
 
 builder.Services.Configure<QrCodeApiOptions>(builder.Configuration.GetSection(QrCodeApiOptions.Position));
 builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection(ConnectionStrings.Position));
