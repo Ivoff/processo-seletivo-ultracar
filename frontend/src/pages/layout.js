@@ -6,10 +6,10 @@ const Layout = () => {
       <nav>
         <ul>
           <li>
-            <Link to="/qrcode">QrCode</Link>
+            <Link to="/qrcode">QrCode (Cliente)</Link>
           </li>
           <li>
-            <Link to="/service">Serviços</Link>
+            <Link to="/service">Serviço (Colaborador)</Link>
           </li>
         </ul>
       </nav>

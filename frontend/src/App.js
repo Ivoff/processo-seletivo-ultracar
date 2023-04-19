@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout/>}>
-          <Route index element={<QrCode/>} />
+          <Route path="qrcode" element={<QrCode/>} />
           <Route path="service" element={<Service/>} />
         </Route>
       </Routes>

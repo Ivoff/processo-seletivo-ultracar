@@ -1,25 +1,33 @@
+import Axios from "axios";
+
 export default function CreateService() {
     const apiurl = "http://localhost:5002/service/create";
     let collaboratorId;
     let carId;
 
     const handleButton = () => {
-        fetch(apiurl, {
-            "method": "POST",
-            mode: 'cors',
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'content-type': 'application/json'
-            },
-            "body": JSON.stringify({
-                collaboratorId,
-                carId
-            })
+        Axios.post(apiurl, {
+            "collaboratorId": collaboratorId,
+            "carId": carId            
         }).then((res) => {
-            if (res.status !== 200)
-                alert("Algo de errado aconteceu");
+            console.log(res);
+        }).catch((err) => {
+            console.log(err);
         })
-        .catch(err => console.log(err));
+    //     fetch(apiurl, {
+    //         "method": "POST",
+    //         mode: 'cors',
+    //         headers: {
+    //             'Access-Control-Allow-Origin': '*',
+    //             'content-type': 'application/json'
+    //         },
+    //         "body": JSON.stringify()
+    //     }).then((res) => {
+    //         console.log(res);
+    //         // if (res.status !== 200)
+    //         //     alert("Algo de errado aconteceu");
+    //     })
+    //     .catch(err => console.log(err));
     }
 
     
