@@ -8,6 +8,14 @@ using ServicesManager.WebApi.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options => {
+    options.AddDefaultPolicy(
+        policy => {
+            policy.WithOrigins("http://localhost:3000").AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials();;
+        });
+});
 builder.Services.AddControllers();
 builder.Services.AddDomain();
 builder.Services.AddInfra();
@@ -24,7 +32,7 @@ builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection(C
 
 var app = builder.Build();
 
-app.UseHttpsRedirection();
+app.UseCors();
 
 app.UseAuthorization();
 

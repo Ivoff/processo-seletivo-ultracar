@@ -32,3 +32,6 @@
 
 # Mudanças - 4
 * Não dá tempo de implementar a remoção de peças então a aplicação não suportará essa funcionalidade.
+
+# Mudanças - 5
+* O plano era ler o qrcode mas não dá tempo, então quem foi usar terá que usar uma aplicação de terceiros para decodificá-lo.

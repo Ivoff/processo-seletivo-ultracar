@@ -26,7 +26,7 @@ public class GeneratorController: ControllerBase
         if (validationResult.IsValid == false)
             return BadRequest(validationResult.ToString());
         
-        string content = $"{generateRequest.ClientId.ToString()},{generateRequest.CarId.ToString()}";
+        string content = $"clientId:{generateRequest.ClientId.ToString()},carId:{generateRequest.CarId.ToString()}";
         MemoryStream byteStream = new MemoryStream();
         var qrCode = new QrCode(content, new Vector2Slim(512, 512), SKEncodedImageFormat.Png);
         qrCode.GenerateImage(byteStream);

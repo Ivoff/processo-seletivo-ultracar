@@ -1,4 +1,4 @@
-id,created_at,name,price
+id,createdat,name,price
 cbd1696a-a7aa-4164-8f27-baf71ba17be2,2022-08-02T08:35:23.200-04:00,Mens Contraption,12.95
 df93ef5c-6cf0-47bd-b384-01cc8ef28468,2012-12-01T18:41:17.866-03:00,Toy Instrument,165
 598d2c52-95a6-4702-a6a0-21d03a61bcfb,2012-06-04T05:22:13.660-04:00,Computer Paraphernalia,83.95
