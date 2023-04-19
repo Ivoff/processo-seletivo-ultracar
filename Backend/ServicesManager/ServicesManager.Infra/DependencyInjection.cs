@@ -1,6 +1,7 @@
 using ServicesManager.Domain.Client;
 using ServicesManager.Domain.Service;
 using ServicesManager.Domain.Shared;
+using ServicesManager.Infra.Queries;
 using ServicesManager.Infra.Repository;
 using Car = ServicesManager.Domain.Service.Car;
 
@@ -21,6 +22,7 @@ public static class ServiceCollectionExtension
         services.AddScoped<IRepository<Car>, CarRepository>();
         services.AddScoped<IRepository<Collaborator>, CollaboratorRepository>();
         services.AddScoped<IRepository<Part>, PartRepository>();
+        services.AddScoped<IAllServiceQuery, AllServicesQuery>();
         return services;
     }
 }

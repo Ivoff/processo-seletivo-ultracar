@@ -1,3 +1,6 @@
+using ServicesManager.Infra.DTOs;
+using ServicesManager.Infra.Queries;
+
 namespace ServicesManager.WebApi.Controllers;
 
 using System.Net;
@@ -14,13 +17,15 @@ public class ServiceController : ControllerBase
     private readonly IValidator<AddPartRequest> _addPartRequestValidator;
     private readonly IValidator<RemovePartRequest> _removePartRequestValidator;
     private readonly IServiceAppService _serviceAppService;
+    private readonly IAllServiceQuery _allServiceQuery;
 
     public ServiceController(
         IValidator<NewServiceRequest> newServiceRequestValidator, 
         IServiceAppService serviceAppService,
         IValidator<ServiceIdRequest> serviceIdRequestValidator,
         IValidator<AddPartRequest> addPartRequestValidator,
-        IValidator<RemovePartRequest> removePartRequestValidator
+        IValidator<RemovePartRequest> removePartRequestValidator,
+        IAllServiceQuery allServiceQuery
     )
     {
         _newServiceRequestValidator = newServiceRequestValidator;
@@ -28,6 +33,7 @@ public class ServiceController : ControllerBase
         _serviceIdRequestValidator = serviceIdRequestValidator;
         _addPartRequestValidator = addPartRequestValidator;
         _removePartRequestValidator = removePartRequestValidator;
+        _allServiceQuery = allServiceQuery;
     }
     
     [HttpPost("create")]
@@ -138,5 +144,22 @@ public class ServiceController : ControllerBase
         }
 
         return Ok();
+    }
+    
+    [HttpGet("")]
+    public IActionResult Services()
+    {
+        List<ServiceApiDTO> result;
+        try
+        {
+            result = _allServiceQuery.Read();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode((int) HttpStatusCode.InternalServerError);
+        }
+
+        return Ok(result);
     }
 }
