@@ -90,8 +90,10 @@ public class AllServicesQuery: IAllServiceQuery
             }
             else
             {
-                if (timeSpan.Hours > 0) returnString = timeSpan.Hours.ToString() + " hours, ";
-                returnString += timeSpan.Minutes.ToString() + " minutes ago";
+                if (timeSpan.Hours > 0) 
+                    returnString = timeSpan.Hours.ToString() + " hours, ";
+                
+                returnString += timeSpan.Minutes.ToString() + " minutes";
             }
         }
         return returnString;

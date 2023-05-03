@@ -1,52 +1,54 @@
-import Axios from "axios";
+import { useState } from "react";
+import handlePost from "./handlePost";
 
-export default function CreateService() {
-    const apiurl = "http://localhost:5002/service/create";
-    let collaboratorId;
-    let carId;
+export default function CreateService(props) {
+    const createUrl = "http://localhost:5002/service/create";
+    
+    const [collaborator, setCollaborator] = useState("");
+    const [car, setCar] = useState("");
 
     const handleButton = () => {
-        Axios.post(apiurl, {
-            "collaboratorId": collaboratorId,
-            "carId": carId            
-        }).then((res) => {
-            console.log(res);
-        }).catch((err) => {
-            console.log(err);
-        })
-    //     fetch(apiurl, {
-    //         "method": "POST",
-    //         mode: 'cors',
-    //         headers: {
-    //             'Access-Control-Allow-Origin': '*',
-    //             'content-type': 'application/json'
-    //         },
-    //         "body": JSON.stringify()
-    //     }).then((res) => {
-    //         console.log(res);
-    //         // if (res.status !== 200)
-    //         //     alert("Algo de errado aconteceu");
-    //     })
-    //     .catch(err => console.log(err));
+        handlePost(
+            createUrl, 
+            JSON.stringify({
+                CollaboratorId: collaborator,
+                CarId: car
+            }), 
+            "Serviço Criado com Sucesso!",
+            props.updateServicesData
+        );
     }
-
     
     return (
-        <div>
-            <h1>Criar Serviço</h1>
-            <h3>Avaliação do veículo e adição das peças</h3>
-            <ul>
-                <li>Escaneie o QrCode do cliente selecionado por uma aplicação de terceiros</li>
-                <li>Preencha os campos com os dados decodificados do QrCode</li>
-            </ul>
+        <div className="flex">
             <div>
-                <label for="carId">Digite o Id do carro:</label>
-                <input type="text" name="carId" onChange={(event) => collaboratorId = event.target.value}/>
-                <br/>
-                <label for="collaboratorId">Digite o Id do colaborador:</label>
-                <input type="text" name="collaboratorId" onChange={(event) => carId = event.target.value}/>
-                <br/>
-                <button type="button" onClick={() => handleButton()}>Criar Serviço</button>
+                <h1>Criar Serviço</h1>
+                <h3>Avaliação do veículo e adição das peças</h3>
+                <ul>
+                    <li>Escaneie o QrCode do cliente selecionado por uma aplicação de terceiros</li>
+                    <li>Preencha os campos com os dados decodificados do QrCode</li>
+                </ul>
+                <div className="">
+                    <label htmlFor="carId">Digite o Id do carro:</label>
+                    <input type="text" 
+                        name="carId" 
+                        autoComplete="off" 
+                        onChange={(event) => setCar(event.target.value)}
+                    />
+                    <br/>
+                    <label htmlFor="collaboratorId">Digite o Id do colaborador:</label>
+                    <input type="text" 
+                        name="collaboratorId" 
+                        autoComplete="off" 
+                        onChange={(event) => setCollaborator(event.target.value)}
+                    />
+                    <br/>
+                    <button type="button" onClick={() => {
+                        handleButton();
+                    }}>
+                        Criar Serviço
+                    </button>
+                </div>
             </div>
         </div>
     );

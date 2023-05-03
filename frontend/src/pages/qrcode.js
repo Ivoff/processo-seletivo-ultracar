@@ -21,7 +21,7 @@ export default function QrCode() {
             })
         }).then((res) => {
             if (res.status !== 200) {
-                alert("Algo de errado aconteceu");
+                console.error("Algo de errado aconteceu");
             }
             else{
                 res.json().then((data) => {
@@ -48,10 +48,10 @@ export default function QrCode() {
             <h1>Cliente seleciona carro</h1>
             <h3>Aqui o cliente selecionaria o carro cadastrado que ele queira realizar a visita</h3>
             <p>Na minha modelagem, clientes podem ter mais de um carro cadastrado, porém não existem casos assim no banco</p>
-            <label for="clientId">Digite o Id do cliente:</label>
+            <label htmlFor="clientId">Digite o Id do cliente:</label>
             <input type="text" name="clientId" onChange={(event) => clientId = event.target.value}/>
             <br/>
-            <label for="carId">Digite o Id do Carro:</label>
+            <label htmlFor="carId">Digite o Id do Carro:</label>
             <input type="text" name="carId" onChange={(event) => carId = event.target.value}/>
             <br/>
             <button type="button" onClick={() => handleButton()}>Gerar QrCode</button>

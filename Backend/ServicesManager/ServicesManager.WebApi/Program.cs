@@ -10,10 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options => {
     options.AddDefaultPolicy(
-        policy => {
-            policy.WithOrigins("http://localhost:3000").AllowAnyHeader()
-                .AllowAnyMethod()
-                .AllowCredentials();;
+        policy =>
+        {
+            policy.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
         });
 });
 builder.Services.AddControllers();
@@ -33,7 +34,8 @@ builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection(C
 var app = builder.Build();
 
 app.UseCors();
-
+// app.UseAuthentication();
+// app.UseAuthorization();
+// app.UseHttpsRedirection();
 app.MapControllers();
-
 app.Run();
